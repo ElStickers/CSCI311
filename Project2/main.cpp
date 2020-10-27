@@ -45,6 +45,9 @@ int main(int argc, char const *argv[]) {
       cin >> k2;
       LCA = arbol.findLCA(k1, k2);
       cout << LCA << endl;
+    } else if (command == "findKthSmallest") {
+      cin >> k;
+      cout << arbol.findKthSmallest(k) << endl;
     } else {
       cerr << "ERROR: command " << command << " ist not found." << endl;
     }  // else

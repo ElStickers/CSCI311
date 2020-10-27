@@ -29,7 +29,7 @@ class BST {
   bool findK(Tnode *cur, string k);
   void collect(Tnode *cur, string k, vector<string> &v);
   string scan(vector<string> k1, vector<string> k2);
-
+  string findKthSmallest(Tnode *cur, int k);
 
  public:
   BST() : root(NULL){};
@@ -84,6 +84,10 @@ class BST {
     collect(root, k2, v2);
     return scan(v1, v2);
   };
+
+  string findKthSmallest(int k) {
+    return findKthSmallest(root, k);
+  }
 };
 
 #endif

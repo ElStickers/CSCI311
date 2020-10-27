@@ -298,3 +298,16 @@ string BST::scan(vector<string> v1, vector<string> v2) {
     }
   }
 }
+
+string BST::findKthSmallest(Tnode *cur, int k) {
+  if (cur == NULL) {
+    return " ";
+  }
+  if (k <= getSize(cur->left)) {
+    return findKthSmallest(cur->left, k);
+  } else if (k == getSize(cur->left) + 1) {
+    return cur->key;
+  } else if (getSize(cur->left) < k) {
+    return findKthSmallest(cur->right, (k - (cur->left->size) - 1));
+  }
+}
