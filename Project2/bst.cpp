@@ -311,3 +311,20 @@ string BST::findKthSmallest(Tnode *cur, int k) {
     return findKthSmallest(cur->right, (k - (cur->left->size) - 1));
   }
 }
+
+void BST::printLongestPath(Tnode *cur) {
+  if (cur == NULL) {
+    return;
+  }
+  if (getHeight(cur->left) > getHeight(cur->right)) {
+    cout << cur->key << " ";
+    printLongestPath(cur->left);
+  } else if (getHeight(cur->left) < getHeight(cur->right)) {
+    cout << cur->key << " ";
+    printLongestPath(cur->right);
+  } else if (getHeight(cur->left) == getHeight(cur->right)) {
+    cout << cur->key << " ";
+    printLongestPath(cur->left);
+  }
+  return;
+}

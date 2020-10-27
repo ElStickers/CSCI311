@@ -30,6 +30,7 @@ class BST {
   void collect(Tnode *cur, string k, vector<string> &v);
   string scan(vector<string> k1, vector<string> k2);
   string findKthSmallest(Tnode *cur, int k);
+  void printLongestPath(Tnode *cur);
 
  public:
   BST() : root(NULL){};
@@ -88,6 +89,10 @@ class BST {
   string findKthSmallest(int k) {
     return findKthSmallest(root, k);
   }
+
+  void printLongestPath() {
+    printLongestPath(root);
+  };
 };
 
 #endif
