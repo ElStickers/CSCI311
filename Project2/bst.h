@@ -31,6 +31,8 @@ class BST {
   string scan(vector<string> k1, vector<string> k2);
   string findKthSmallest(Tnode *cur, int k);
   void printLongestPath(Tnode *cur);
+  void collectSubtree(Tnode *cur, vector<string> &sub, string akey);
+  void fillVector(Tnode *cur, vector<string> &sub);
 
  public:
   BST() : root(NULL){};
@@ -92,6 +94,13 @@ class BST {
 
   void printLongestPath() {
     printLongestPath(root);
+  };
+
+  void collectSubtree(vector<string> sub, string akey) {
+    collectSubtree(root, sub, akey);
+    for (size_t i = 0; i < sub.size(); i++) {
+      cout << sub[i] << " ";
+    }
   };
 };
 

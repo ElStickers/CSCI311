@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
   BST arbol;
-  vector<string> path;
+  vector<string> sub;
   string command;
   string word;
   string akey;
@@ -52,7 +52,11 @@ int main(int argc, char const *argv[]) {
     } else if (command == "printLongestPath") {
       arbol.printLongestPath();
       cout << endl;
-    } else {
+    } else if (command == "collectSubtree") {
+      cin >> akey;
+      arbol.collectSubtree(sub, akey);
+      cout << endl;
+    }else {
       cerr << "ERROR: command " << command << " ist not found." << endl;
     }  // else
   }    /// while

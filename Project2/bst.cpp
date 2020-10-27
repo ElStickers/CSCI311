@@ -297,6 +297,7 @@ string BST::scan(vector<string> v1, vector<string> v2) {
       return v1[i-1];
     }
   }
+  return " ";
 }
 
 string BST::findKthSmallest(Tnode *cur, int k) {
@@ -308,8 +309,9 @@ string BST::findKthSmallest(Tnode *cur, int k) {
   } else if (k == getSize(cur->left) + 1) {
     return cur->key;
   } else if (getSize(cur->left) < k) {
-    return findKthSmallest(cur->right, (k - (cur->left->size) - 1));
+    return findKthSmallest(cur->right, (k - (getSize(cur->left)) - 1));
   }
+  return " ";
 }
 
 void BST::printLongestPath(Tnode *cur) {
@@ -326,5 +328,29 @@ void BST::printLongestPath(Tnode *cur) {
     cout << cur->key << " ";
     printLongestPath(cur->left);
   }
+  return;
+}
+
+void BST::collectSubtree(Tnode *cur, vector<string> &sub, string akey) {
+  if (cur == NULL) {
+    return;
+  }
+  if (cur->key > akey) {
+    collectSubtree(cur->left, sub, akey);
+  } else if (cur->key < akey) {
+    collectSubtree(cur->right, sub, akey);
+  } else {
+    fillVector(cur, sub);
+  }
+  return;
+}
+
+void BST::fillVector(Tnode *cur, vector<string> &sub) {
+  if (cur == NULL) {
+    return;
+  }
+  fillVector(cur->left, sub);
+  sub.push_back(cur->key);
+  fillVector(cur->right, sub);
   return;
 }
