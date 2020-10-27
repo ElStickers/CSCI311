@@ -264,3 +264,36 @@ void BST::printSize(Tnode *cur) {
   printSize(cur->right);
 }  // printSize()
 
+bool BST::findK(Tnode *cur, string k) {
+  if (cur == NULL) {
+    return false;
+  }
+  if (cur->key < k) {
+    findK(cur->right, k);
+  } else if (cur->key > k) {
+    findK(cur->left, k);
+  } else {
+    return true;
+  }//findK()
+}
+
+void BST::collect(Tnode *cur, string k, vector<string> v) {
+  if (cur = NULL) {
+    return;
+  }
+  if (cur->key < k) {
+    collect(cur->right, k, v);
+    v.push_back(cur->key);
+  } else if (cur->key > k) {
+    collect(cur->left, k, v);
+    v.push_back(cur->key);
+  }
+}
+
+string BST::scan(vector<string> v1, vector<string> v2) {
+  for (int i = 0; i < v1.size(); i++) {
+    if (v1[i] == v2[i]) {
+      return v1[i];
+    }
+  }
+}

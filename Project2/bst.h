@@ -26,6 +26,10 @@ class BST {
   int getSize(Tnode *cur);
   void updateSize(Tnode *cur);
   void printSize(Tnode *cur);
+  bool findK(Tnode *cur, string k);
+  void collect(Tnode *cur, string k, vector<string> v);
+  string scan(vector<string> k1, vector<string> k2);
+
 
  public:
   BST() : root(NULL){};
@@ -48,7 +52,9 @@ class BST {
     cout << endl;
   };
 
-  void findPrint(string akey) { findPrint(root, akey); };
+  void findPrint(string akey) {
+    findPrint(root, akey); 
+  };
 
   void heightPrint() {
     heightPrint(root);
@@ -62,12 +68,22 @@ class BST {
 
   void remove(string akey) { 
     root = remove(root, akey); 
-  }
+  };
 
   void printSize() {
     printSize(root);
     cout << endl;
-  }
+  };
+  
+  string findLCA(string k1, string k2) {
+    vector<string> v1, v2;
+    if (findK(root, k1) == false || findK(root, k2) == false) {
+      return " ";
+    }
+    collect(root, k1, v1);
+    collect(root, k2, v2);
+    return scan(v1, v2);
+  };
 };
 
 #endif
