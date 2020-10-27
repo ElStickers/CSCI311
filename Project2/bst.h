@@ -27,7 +27,7 @@ class BST {
   void updateSize(Tnode *cur);
   void printSize(Tnode *cur);
   bool findK(Tnode *cur, string k);
-  void collect(Tnode *cur, string k, vector<string> v);
+  void collect(Tnode *cur, string k, vector<string> &v);
   string scan(vector<string> k1, vector<string> k2);
 
 
@@ -74,7 +74,7 @@ class BST {
     printSize(root);
     cout << endl;
   };
-  
+
   string findLCA(string k1, string k2) {
     vector<string> v1, v2;
     if (findK(root, k1) == false || findK(root, k2) == false) {

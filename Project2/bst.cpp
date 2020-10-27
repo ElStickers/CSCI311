@@ -272,28 +272,29 @@ bool BST::findK(Tnode *cur, string k) {
     findK(cur->right, k);
   } else if (cur->key > k) {
     findK(cur->left, k);
-  } else {
-    return true;
-  }//findK()
+  }
+  return true;
 }
 
-void BST::collect(Tnode *cur, string k, vector<string> v) {
-  if (cur = NULL) {
+void BST::collect(Tnode *cur, string k, vector<string> &v) {
+  if (cur == NULL) {
     return;
   }
   if (cur->key < k) {
+    v.push_back(cur->key);
     collect(cur->right, k, v);
-    v.push_back(cur->key);
   } else if (cur->key > k) {
-    collect(cur->left, k, v);
     v.push_back(cur->key);
+    collect(cur->left, k, v);
   }
+   v.push_back(cur->key);
+  return;
 }
 
 string BST::scan(vector<string> v1, vector<string> v2) {
-  for (int i = 0; i < v1.size(); i++) {
-    if (v1[i] == v2[i]) {
-      return v1[i];
+  for (size_t i = 0; i < v1.size(); i++) {
+    if (v1[i] != v2[i]) {
+      return v1[i-1];
     }
   }
 }

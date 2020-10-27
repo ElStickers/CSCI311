@@ -11,7 +11,6 @@ int main(int argc, char const *argv[]) {
   string word;
   string akey;
   string kSmallest;
-  string k1, k2;
   string LCA;
   int len;
   int k;
@@ -40,13 +39,12 @@ int main(int argc, char const *argv[]) {
       arbol.printSize();
       cout << endl;
     } else if (command == "findLCA") {
+      string k1;
+      string k2;
       cin >> k1;
       cin >> k2;
       LCA = arbol.findLCA(k1, k2);
       cout << LCA << endl;
-    } else if (command == "findKthSmallest") {
-      //kSmallest = arbol.findKthSmallest();
-      cout << kSmallest << endl;
     } else {
       cerr << "ERROR: command " << command << " ist not found." << endl;
     }  // else
